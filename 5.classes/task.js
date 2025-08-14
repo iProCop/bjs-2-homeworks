@@ -3,12 +3,12 @@ class PrintEditionItem {
         this.name = name;
         this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
-        this._state = 100;
+        this.state = 100;
         this.type = null;
     }
 
     fix() {
-        this.state = this._state * 1.5; 
+        this.state = this.state * 1.5; 
     }
 
     set state(newState) {
@@ -95,7 +95,7 @@ class Student {
 
     addMark(mark, subject) {
         if (mark < 2 || mark > 5) {
-            console.log("Оценка ${mark} недопустима, допустимые оценки от 2 до 5");
+            console.log(`Оценка ${mark} недопустима, допустимые оценки от 2 до 5`);
             return;
         }
 
@@ -113,17 +113,17 @@ class Student {
 
         const sum = this.marks[subject].reduce((acc, mark) => acc + mark, 0);
 
-        return sum / this.marks[subject].lenght;
+        return sum / this.marks[subject].length;
     }
 
     getAverage() {
-        const subject = Object.keys(this.marks);
-        if (subject.lenght === 0) {
+        const subjects = Object.keys(this.marks);
+        if (subjects.lenght === 0) {
             return 0;
         }
 
-        const totalSum = subjects.reduce((acc, subject) => {
-      return acc + this.getAverageBySubject(subject);
+        const totalSum = subjects.reduce((acc, subjects) => {
+      return acc + this.getAverageBySubject(subjects);
     }, 0);
 
     return totalSum / subjects.length;
